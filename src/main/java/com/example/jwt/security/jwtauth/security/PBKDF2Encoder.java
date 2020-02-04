@@ -5,6 +5,7 @@ import java.util.Base64;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +33,8 @@ public class PBKDF2Encoder implements PasswordEncoder{
 	 */
 	@Override
 	public String encode(CharSequence cs) {
+		
+		//String encoded = new BCryptPasswordEncoder().encode(cs);
 		/*try {
 			byte[] result = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512")
 											.generateSecret(new PBEKeySpec(cs.toString().toCharArray(), secret.getBytes(), iteration, keylength))
